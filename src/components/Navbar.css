@@ -38,7 +38,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  background: rgba(247, 244, 239, 0.95);
   flex-shrink: 0;
 }
 
