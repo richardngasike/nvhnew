@@ -59,7 +59,7 @@
 .logo-text span {
   display: block;
   font-family: var(--font-body);
-  font-size: 0.68rem;
+  font-size: 0.78rem;
   font-weight: 400;
   color: var(--text-muted);
   letter-spacing: 0.05em;
@@ -252,6 +252,15 @@
   .navbar-inner {
     height: 62px;
   }
+.logo-text span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.38rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
 
   /* slide-down mobile menu */
   .nav-links.open {
@@ -291,6 +300,16 @@
   .logo-text {
     font-size: 1rem;
   }
+
+  .logo-text span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.38rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
 
   .hide-mobile {
     display: none;

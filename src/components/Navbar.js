@@ -74,8 +74,8 @@ export default function Navbar() {
               />
             </div>
             <div className="logo-text">
-              Nairobi Vacant Houses
-              <span>Find Your Perfect Home</span>
+              NVH
+              <span className="logodesc">Find Your Perfect Home</span>
             </div>
           </Link>
 
