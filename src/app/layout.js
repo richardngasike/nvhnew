@@ -9,13 +9,14 @@ import SkipLink from '../components/SkipLink';
    ROOT METADATA  –  targets every high-volume Nairobi rental query
    ───────────────────────────────────────────────────────────────── */
 export const metadata = {
-  metadataBase: new URL('https://www.nairobivacanthouses.co.ke'),
+  metadataBase: new URL('https://www.nairobivacanthouses.com'),
   applicationName: 'Nairobi Vacant Houses',
-  authors: [{ name: 'Nairobi Vacant Houses', url: 'https://www.nairobivacanthouses.co.ke' }],
+  authors: [{ name: 'Nairobi Vacant Houses', url: 'https://www.nairobivacanthouses.com' }],
   generator: 'Next.js',
   referrer: 'origin-when-cross-origin',
   category: 'Real Estate',
 
+  
   title: {
     default:
       'Nairobi Vacant Houses – Bedsitters, Single Rooms, 1, 2 & 3 Bedroom Houses for Rent in Nairobi',
@@ -120,7 +121,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_KE',
-    url: 'https://www.nairobivacanthouses.co.ke',
+    url: 'https://www.nairobivacanthouses.com',
     siteName: 'Nairobi Vacant Houses',
     title:
       'Nairobi Vacant Houses – Find Bedsitters, Single Rooms & Apartments for Rent in Nairobi',
@@ -165,9 +166,9 @@ export const metadata = {
   },
 
   alternates: {
-    canonical: 'https://www.nairobivacanthouses.co.ke',
+    canonical: 'https://www.nairobivacanthouses.com',
     languages: {
-      'en-KE': 'https://www.nairobivacanthouses.co.ke',
+      'en-KE': 'https://www.nairobivacanthouses.com',
     },
   },
 
@@ -209,16 +210,16 @@ export const metadata = {
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'RealEstateAgent',
-  '@id': 'https://www.nairobivacanthouses.co.ke/#organization',
+  '@id': 'https://www.nairobivacanthouses.com/#organization',
   name: 'Nairobi Vacant Houses',
-  url: 'https://www.nairobivacanthouses.co.ke',
+  url: 'https://www.nairobivacanthouses.com',
   logo: {
     '@type': 'ImageObject',
-    url: 'https://www.nairobivacanthouses.co.ke/logo.png',
+    url: 'https://www.nairobivacanthouses.com/logo.png',
     width: 300,
     height: 60,
   },
-  image: 'https://www.nairobivacanthouses.co.ke/og-image.jpg',
+  image: 'https://www.nairobivacanthouses.com/og-image.jpg',
   description:
     "Kenya's leading platform for vacant house rentals in Nairobi. Connecting landlords and tenants directly across all Nairobi estates.",
   address: {
@@ -252,18 +253,18 @@ const organizationSchema = {
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  '@id': 'https://www.nairobivacanthouses.co.ke/#website',
-  url: 'https://www.nairobivacanthouses.co.ke',
+  '@id': 'https://www.nairobivacanthouses.com/#website',
+  url: 'https://www.nairobivacanthouses.com',
   name: 'Nairobi Vacant Houses',
   description:
     'Find bedsitters, single rooms, one bedroom, two bedroom and three bedroom houses for rent in Nairobi, Kenya.',
-  publisher: { '@id': 'https://www.nairobivacanthouses.co.ke/#organization' },
+  publisher: { '@id': 'https://www.nairobivacanthouses.com/#organization' },
   potentialAction: {
     '@type': 'SearchAction',
     target: {
       '@type': 'EntryPoint',
       urlTemplate:
-        'https://www.nairobivacanthouses.co.ke/listings?location={search_term_string}',
+        'https://www.nairobivacanthouses.com/listings?location={search_term_string}',
     },
     'query-input': 'required name=search_term_string',
   },
@@ -278,13 +279,13 @@ const breadcrumbSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://www.nairobivacanthouses.co.ke',
+      item: 'https://www.nairobivacanthouses.com',
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Browse Listings',
-      item: 'https://www.nairobivacanthouses.co.ke/listings',
+      item: 'https://www.nairobivacanthouses.com/listings',
     },
   ],
 };
@@ -366,67 +367,67 @@ const itemListSchema = {
   name: 'Houses for Rent in Nairobi Kenya',
   description:
     'Browse all vacant houses, bedsitters, single rooms, one bedroom and multi-bedroom apartments for rent across Nairobi.',
-  url: 'https://www.nairobivacanthouses.co.ke/listings',
+  url: 'https://www.nairobivacanthouses.com/listings',
   itemListElement: [
     {
       '@type': 'ListItem',
       position: 1,
       name: 'Bedsitters for Rent in Nairobi',
-      url: 'https://www.nairobivacanthouses.co.ke/listings?property_type=bedsitter',
+      url: 'https://www.nairobivacanthouses.com/listings?property_type=bedsitter',
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Single Rooms for Rent in Nairobi',
-      url: 'https://www.nairobivacanthouses.co.ke/listings?property_type=single_room',
+      url: 'https://www.nairobivacanthouses.com/listings?property_type=single_room',
     },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'One Bedroom Houses for Rent in Nairobi',
-      url: 'https://www.nairobivacanthouses.co.ke/listings?property_type=one_bedroom',
+      url: 'https://www.nairobivacanthouses.com/listings?property_type=one_bedroom',
     },
     {
       '@type': 'ListItem',
       position: 4,
       name: 'Two Bedroom Apartments for Rent in Nairobi',
-      url: 'https://www.nairobivacanthouses.co.ke/listings?property_type=two_bedroom',
+      url: 'https://www.nairobivacanthouses.com/listings?property_type=two_bedroom',
     },
     {
       '@type': 'ListItem',
       position: 5,
       name: 'Three Bedroom Houses for Rent in Nairobi',
-      url: 'https://www.nairobivacanthouses.co.ke/listings?property_type=three_bedroom',
+      url: 'https://www.nairobivacanthouses.com/listings?property_type=three_bedroom',
     },
     {
       '@type': 'ListItem',
       position: 6,
       name: 'Houses for Rent in Westlands',
-      url: 'https://www.nairobivacanthouses.co.ke/listings?location=Westlands',
+      url: 'https://www.nairobivacanthouses.com/listings?location=Westlands',
     },
     {
       '@type': 'ListItem',
       position: 7,
       name: 'Houses for Rent in Kilimani',
-      url: 'https://www.nairobivacanthouses.co.ke/listings?location=Kilimani',
+      url: 'https://www.nairobivacanthouses.com/listings?location=Kilimani',
     },
     {
       '@type': 'ListItem',
       position: 8,
       name: 'Houses for Rent in Kasarani',
-      url: 'https://www.nairobivacanthouses.co.ke/listings?location=Kasarani',
+      url: 'https://www.nairobivacanthouses.com/listings?location=Kasarani',
     },
     {
       '@type': 'ListItem',
       position: 9,
       name: 'Houses for Rent in Pipeline Embakasi',
-      url: 'https://www.nairobivacanthouses.co.ke/listings?location=Pipeline',
+      url: 'https://www.nairobivacanthouses.com/listings?location=Pipeline',
     },
     {
       '@type': 'ListItem',
       position: 10,
       name: 'Houses for Rent in Karen',
-      url: 'https://www.nairobivacanthouses.co.ke/listings?location=Karen',
+      url: 'https://www.nairobivacanthouses.com/listings?location=Karen',
     },
   ],
 };
@@ -443,7 +444,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
         {/* Canonical */}
-        <link rel="canonical" href="https://www.nairobivacanthouses.co.ke" />
+        <link rel="canonical" href="https://www.nairobivacanthouses.com" />
 
         {/* Structured Data */}
         <script
