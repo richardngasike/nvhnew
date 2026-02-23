@@ -49,6 +49,9 @@ const PROPERTY_TYPES = [
   { label: 'One Bedroom',  value: 'one_bedroom' },
   { label: 'Two Bedroom',  value: 'two_bedroom' },
   { label: 'Three Bedroom',value: 'three_bedroom' },
+  { label: 'Mansion',value: 'mansion' },
+  { label: 'Airbnb',value: 'airrbnb' },
+
 ];
 
 const SORT_OPTIONS = [
