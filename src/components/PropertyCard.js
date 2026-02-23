@@ -1,6 +1,8 @@
 'use client';
+
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './PropertyCard.module.css';
 
 const TYPE_LABELS = {
@@ -8,7 +10,7 @@ const TYPE_LABELS = {
   single_room: 'Single Room',
   one_bedroom: '1 Bedroom',
   two_bedroom: '2 Bedroom',
-  three_bedroom: '3 Bedroom'
+  three_bedroom: '3 Bedroom',
 };
 
 const AMENITY_ICONS = {
@@ -21,10 +23,11 @@ const AMENITY_ICONS = {
   gym: '💪',
   pool: '🏊',
   garden: '🌿',
-  backup: '🔋'
+  backup: '🔋',
 };
 
 export default function PropertyCard({ listing }) {
+  // Favorites state
   const [favorited, setFavorited] = useState(() => {
     if (typeof window !== 'undefined') {
       const favs = JSON.parse(localStorage.getItem('nhv_favorites') || '[]');
@@ -37,35 +40,43 @@ export default function PropertyCard({ listing }) {
     e.preventDefault();
     e.stopPropagation();
     const favs = JSON.parse(localStorage.getItem('nhv_favorites') || '[]');
-    let newFavs;
-    if (favorited) {
-      newFavs = favs.filter(id => id !== listing.id);
-    } else {
-      newFavs = [...favs, listing.id];
-    }
+    const newFavs = favorited
+      ? favs.filter((id) => id !== listing.id)
+      : [...favs, listing.id];
     localStorage.setItem('nhv_favorites', JSON.stringify(newFavs));
     setFavorited(!favorited);
   };
 
+  // Determine image URL
   const primaryImage = listing.images?.[0];
   const imageUrl = primaryImage
-    ? `http://localhost:5000${primaryImage}`
+    ? listing._isDemo
+      ? primaryImage // demo images from public/
+      : `http://localhost:5000${primaryImage}` // backend uploaded images
     : null;
 
   const avgRating = parseFloat(listing.avg_rating || 0);
-  const stars = Math.round(avgRating);
 
   return (
     <Link href={`/listings/${listing.id}`} className={styles.card}>
       <div className={styles.imageWrapper}>
         {imageUrl ? (
-          <img src={imageUrl} alt={listing.title} className={styles.image} />
+          <Image
+            src={imageUrl}
+            alt={listing.title}
+            className={styles.image}
+            width={400}
+            height={250}
+            style={{ objectFit: 'cover' }}
+          />
         ) : (
           <div className={styles.imagePlaceholder}>🏠</div>
         )}
+
         <div className={styles.typeBadge}>
           {TYPE_LABELS[listing.property_type] || listing.property_type}
         </div>
+
         <button
           className={styles.favoriteBtn}
           onClick={toggleFavorite}
@@ -73,10 +84,9 @@ export default function PropertyCard({ listing }) {
         >
           {favorited ? '❤️' : '🤍'}
         </button>
+
         {listing.views > 0 && (
-          <div className={styles.viewCount}>
-            👁 {listing.views}
-          </div>
+          <div className={styles.viewCount}>👁 {listing.views}</div>
         )}
       </div>
 
@@ -90,7 +100,10 @@ export default function PropertyCard({ listing }) {
 
         <div className={styles.location}>
           <span>📍</span>
-          <span>{listing.sub_location ? `${listing.sub_location}, ` : ''}{listing.location}</span>
+          <span>
+            {listing.sub_location ? `${listing.sub_location}, ` : ''}
+            {listing.location}
+          </span>
         </div>
 
         {listing.amenities && listing.amenities.length > 0 && (
@@ -101,7 +114,9 @@ export default function PropertyCard({ listing }) {
               </span>
             ))}
             {listing.amenities.length > 4 && (
-              <span className={styles.amenityPill}>+{listing.amenities.length - 4}</span>
+              <span className={styles.amenityPill}>
+                +{listing.amenities.length - 4}
+              </span>
             )}
           </div>
         )}
@@ -113,11 +128,10 @@ export default function PropertyCard({ listing }) {
             </div>
             <span className={styles.landlordName}>{listing.landlord_name}</span>
           </div>
+
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             {avgRating > 0 && (
-              <div className={styles.rating}>
-                ⭐ {avgRating.toFixed(1)}
-              </div>
+              <div className={styles.rating}>⭐ {avgRating.toFixed(1)}</div>
             )}
             <span className={styles.viewBtn}>View →</span>
           </div>
