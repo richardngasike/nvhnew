@@ -1,23 +1,41 @@
 import axios from 'axios';
+import axiosRetry from 'axios-retry';
 
-// Use environment variable for backend URL (Render)
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
 const api = axios.create({
   baseURL: API_BASE,
-  timeout: 30000,
+  timeout: 60000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
-// Request interceptor: add auth token if exists
+axiosRetry(api, {
+  retries: 3,
+  retryDelay: (retryCount) => retryCount * 800,
+  retryCondition: (error) => {
+    return (
+      axiosRetry.isNetworkOrIdempotentRequestError(error) ||
+      error.code === 'ECONNABORTED' ||
+      (error.response?.status ?? 0) >= 500 ||
+      error.response?.status === 429
+    );
+  },
+  shouldResetTimeout: true,
+});
+
 api.interceptors.request.use((config) => {
   if (typeof window !== 'undefined') {
     const token = localStorage.getItem('nhv_token');
-    if (token) config.headers.Authorization = `Bearer ${token}`;
+    if (token) {
+      config.headers = config.headers ?? {};
+      config.headers.Authorization = `Bearer ${token}`;
+    }
   }
   return config;
 });
 
-// Response interceptor: handle 401 unauthorized
 api.interceptors.response.use(
   (response) => response.data,
   (error) => {
@@ -27,11 +45,10 @@ api.interceptors.response.use(
         localStorage.removeItem('nhv_landlord');
       }
     }
-    return Promise.reject(error.response?.data || error);
+    return Promise.reject(error.response?.data || error.message || 'Network error');
   }
 );
 
-// Listings API
 export const listingsAPI = {
   getAll: (params) => api.get('/listings', { params }),
   getOne: (id) => api.get(`/listings/${id}`),
@@ -45,7 +62,6 @@ export const listingsAPI = {
   checkPayment: (checkoutId) => api.get(`/listings/payment/status/${checkoutId}`),
 };
 
-// Landlord API
 export const landlordAPI = {
   register: (data) => api.post('/landlords/register', data),
   login: (data) => api.post('/landlords/login', data),
