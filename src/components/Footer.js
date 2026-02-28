@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import styles from './Footer.module.css';
 
+// Import only the icons we need (tree-shakable)
+import { FaHome, FaFacebookF, FaTwitter, FaWhatsapp, FaInstagram, FaHeart, FaTiktok } from 'react-icons/fa';
+
 export default function Footer() {
   return (
     <footer className={styles.footer}>
@@ -8,7 +11,7 @@ export default function Footer() {
         <div className={styles.grid}>
           <div className={styles.brand}>
             <div className={styles.logo}>
-              <span>🏠</span>
+              <FaHome className={styles.logoIcon} />
               <div>
                 <strong>Nairobi Vacant Houses</strong>
                 <p>Find Your Perfect Home</p>
@@ -19,10 +22,18 @@ export default function Footer() {
               Your next home is just a click away.
             </p>
             <div className={styles.social}>
-              <a href="#" aria-label="Facebook">📘</a>
-              <a href="#" aria-label="Twitter">🐦</a>
-              <a href="#" aria-label="WhatsApp">💬</a>
-              <a href="#" aria-label="Instagram">📸</a>
+              <a href="#" aria-label="Facebook">
+                <FaFacebookF />
+              </a>0
+              <a href="#" aria-label="WhatsApp">
+                <FaWhatsapp />
+              </a>
+              <a href="#" aria-label="Instagram">
+                <FaInstagram />
+              </a>
+                <a href="#" aria-label="Instagram">
+                <FaTiktok />
+              </a>
             </div>
           </div>
 
@@ -62,7 +73,9 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <p>© {new Date().getFullYear()} Nairobi Vacant Houses. All rights reserved.</p>
-          <p>Built with ❤️ for Nairobi residents</p>
+          <p>
+            Built with <FaHeart className={styles.heartIcon} /> for Nairobi residents
+          </p>
         </div>
       </div>
     </footer>

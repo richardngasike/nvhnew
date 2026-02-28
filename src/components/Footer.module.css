@@ -1,10 +1,41 @@
 .footer {
-  background: var(--secondary);
-  color: rgba(255,255,255,0.8);
-  padding: 64px 0 0;
-  margin-top: 80px;
+  /* Remove or comment out the old solid color */
+  /* background: var(--secondary); */
+  
+  /* Use the image from public folder */
+  background-image: url('/footerbg.jpg');
+  
+  /* Recommended settings for a nice footer background */
+  background-size: cover;          /* Cover the whole area – most common choice */
+  background-position: center;     /* Center the image */
+  background-repeat: no-repeat;    /* Prevent tiling */
+  
+  /* Optional: Add a dark overlay so text remains readable */
+  position: relative;
+  color: rgba(255, 255, 255, 0.2); /* Slightly brighter text than before */
 }
 
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8); /* Dark overlay – adjust 0.55 opacity as needed (0.4–0.7 works well) */
+  z-index: 1;
+}
+
+/* Make sure content stays above the overlay */
+.footer > * {
+  position: relative;
+  z-index: 2;
+}
+
+.footer {
+  padding: 80px 0 40px;   /* A bit more top padding looks good with background image */
+  margin-top: 80px;
+}
 .grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -13,7 +44,7 @@
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.brand {}
+
 
 .logo {
   display: flex;
@@ -52,13 +83,15 @@
 .social {
   display: flex;
   gap: 12px;
+  color: aliceblue;
+  
 }
 
 .social a {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,6 +101,7 @@
 
 .social a:hover {
   background: var(--primary);
+  color: black;
 }
 
 .links h4 {
@@ -102,7 +136,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 @media (max-width: 900px) {
